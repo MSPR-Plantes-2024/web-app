@@ -1,0 +1,59 @@
+.container {
+    margin-top: 50px;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+
+  .signup-form {
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .signup-form h1 {
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 80px; 
+  }
+  
+  
+  .signup-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .signup-image {
+    overflow: hidden;
+    border-radius: 8px;
+    height: 100%;
+  }
+  
+  .signup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.signup-form button {
+    background-color: #3A5B22; /* Set the background color to light green */
+    width: 100%; /* Make the button take up the full width of the form */
+    color: white; /* Set text color to white for better contrast */
+  }
+  
+
+.footer{
+  margin-top: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 9px;
+}

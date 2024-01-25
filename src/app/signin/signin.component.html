@@ -1,0 +1,40 @@
+<!-- signin.component.html -->
+
+<div class="container">
+  <div class="logo-container">
+    <img src="assets\Capture_d_écran_2023-12-06_114303-removebg-preview 4.png" alt="Logo" class="logo-img">
+  </div>
+
+  <div class="row">
+    <div class="row">
+      <!-- Left Column - Signin Form -->
+      <div class="col-md-6">
+        <div class="signin-form">
+          <h2>Connexion</h2>
+          <form [formGroup]="signinForm" (ngSubmit)="submit()">
+            
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" class="form-control" formControlName="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe:</label>
+              <input type="password" id="password" class="form-control" formControlName="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Right Column - Picture -->
+      <div class="col-md-6">
+        <div class="signin-image">
+          <!-- Replace 'path/to/your/image.jpg' with your actual image path -->
+          <img src="assets/chrisLee70l1tDAI6rMUnsplash1.jpeg" alt="Signin Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" >
+    © Credits : EPSI RENNES 2024 
+  </div>

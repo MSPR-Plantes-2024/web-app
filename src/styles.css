@@ -1,0 +1,9 @@
+/* Use this import statement without the "~" */
+@import 'bootstrap/dist/css/bootstrap.css';
+
+.footer{
+    margin-top: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9px;
+  }

@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
+import { ProfilComponent } from './profil/profil.component';
+import { PublicationsComponent } from './publications/publications.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    SignupComponent,
+    SigninComponent,
+    ProfilComponent,
+    PublicationsComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
