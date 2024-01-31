@@ -4,12 +4,14 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProfilComponent } from './profil/profil.component';
 import { PublicationsComponent } from './publications/publications.component';
+import { PublicationComponent } from './publication/publication.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'profile', component: ProfilComponent },
   { path: 'publications', component: PublicationsComponent},
+  { path: 'publication', component: PublicationComponent},
 
   { path: '', redirectTo: '/signup', pathMatch: 'full' },
 ];
