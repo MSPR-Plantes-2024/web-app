@@ -1,25 +1,45 @@
 .navbar {
-  background-color: #f8f9fa; /* Light background color */
-  box-shadow: 0 4px 6px -6px #222; /* Slight shadow */
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 6px -6px #222; 
 }
 
 .navbar-brand {
   margin-left: 20px;
   font-weight: bold;
-  color: #005307; /* Green color for the brand */
+  color: #005307; 
 }
 
 .navbar-brand:hover {
-  color: #003d00; /* Darker green color on hover */
+  color: #003d00; 
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  box-shadow: 0 4px 6px -6px #222;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+  font-weight: bold;
 }
 
 .user-picture img {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  border-radius: 50%;
   border: 4px solid #fff;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
-.user-details h2, .user-details h3 {
+.user-details h3 {
   color: #333333;
 }
+
+.user-details p {
+  margin-bottom: 5px;
+}
+

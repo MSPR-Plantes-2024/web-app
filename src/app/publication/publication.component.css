@@ -1,14 +1,41 @@
 .navbar {
-    background-color: #f8f9fa; /* Light background color */
-    box-shadow: 0 4px 6px -6px #222; /* Slight shadow */
+    background-color: #f8f9fa; 
+    box-shadow: 0 4px 6px -6px #222; 
   }
   
   .navbar-brand {
     margin-left: 20px;
     font-weight: bold;
-    color: #005307; /* Green color for the brand */
+    color: #005307; 
   }
   
   .navbar-brand:hover {
-    color: #003d00; /* Darker green color on hover */
+    color: #003d00; 
   }
+  .publication-details {
+    margin-top: 20px;
+  }
+  
+  .publication-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .message-form {
+    margin-top: 20px;
+  }
+  
+  .description {
+    margin-top: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #3A5B22;
+    border-color: #3A5B22;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2d4518;
+    border-color: #2d4518;
+  }
+  
