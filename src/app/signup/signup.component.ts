@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserApiService } from './user-api.service';
+import { UserInterface } from './interfaces/user-interface';
 
 @Component({
   selector: 'app-signup',
@@ -8,13 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    Nom: ['', Validators.required],
+    Prénom: ['', Validators.required],
+    Email: ['', [Validators.required, Validators.email]],
+    motDepasse: ['', Validators.required]
   });
-
-  constructor(private fb: FormBuilder) { }
+  user: UserInterface | undefined;
+  constructor(private fb: FormBuilder, private userService: UserApiService) { }
 
   ngOnInit() {
     // No need to initialize the form here if you're initializing it inline
@@ -26,5 +28,11 @@ export class SignupComponent implements OnInit {
       console.log('User submitted:', userData);
       // Add logic to handle form submission (e.g., send data to a server)
     }
+  }
+  getUser(id: number){
+  this.userService.recupererUser(id).subscribe((user)=>{
+this.user = user;
+console.log("user " + this.user.phoneNumber);
+  } );
   }
 }

@@ -8,6 +8,7 @@ import { SigninComponent } from './signin/signin.component';
 import { ProfilComponent } from './profil/profil.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { PublicationComponent } from './publication/publication.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PublicationComponent } from './publication/publication.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
