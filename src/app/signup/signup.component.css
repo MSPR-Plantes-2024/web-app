@@ -45,9 +45,9 @@
   }
 
 .signup-form button {
-    background-color: #3A5B22; /* Set the background color to light green */
-    width: 100%; /* Make the button take up the full width of the form */
-    color: white; /* Set text color to white for better contrast */
+    background-color: #3A5B22;  
+    width: 100%;  
+    color: white;  
   }
   
 
@@ -57,3 +57,9 @@
   font-weight: bold;
   font-size: 9px;
 }
+
+ 
+.logo-img{
+  height: 60px;
+  width: 160px;
+    }

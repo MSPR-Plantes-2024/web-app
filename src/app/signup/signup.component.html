@@ -1,7 +1,7 @@
 <div class="container">
   <!-- Logo-->
   <div class="logo-container">
-    <img src="assets\Capture_d_écran_2023-12-06_114303-removebg-preview 4.png" alt="Logo" class="logo-img">
+    <img src="assets/logo plante.png" alt="Logo" class="logo-img">
   </div>
 
   <div class="row">
@@ -9,7 +9,6 @@
     <div class="col-md-6">
       <div class="signup-form">
         <h1 class="mb-4">Inscription</h1>
-        <!-- Add 'mt-2' for margin-top -->
         <form [formGroup]="signupForm" (ngSubmit)="submit()">
           <div class="form-group">
             <label for="firstName">Nom:</label>
@@ -27,13 +26,14 @@
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" class="form-control" formControlName="motDepasse" required>
           </div>
-
-          <br>
-          <br>
+          <div class="form-group">
+            <label for="status">
+            </label>
+            
+          </div>
 
           <button type="submit" class="btn btn-primary btn-lg btn-block">S'inscrire</button>
-          
-          
+
         </form>
         <br>
         <br>
@@ -47,13 +47,12 @@
     <!-- Right Column - Picture -->
     <div class="col-md-6">
       <div class="signup-image">
-        <!-- Replace 'path/to/your/image.jpg' with your actual image path -->
         <img src="assets\chrisLee70l1tDAI6rMUnsplash1.jpeg" alt="Signup Image" class="img-fluid">
       </div>
     </div>
   </div>
 </div>
 
-<div class="footer" >
-  © Credits : EPSI RENNES 2024 
+<div class="footer">
+  © Credits : EPSI RENNES 2024
 </div>

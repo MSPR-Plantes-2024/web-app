@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publications</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-</head>
+ </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="assets/Capture_d_écran_2023-12-06_114303-removebg-preview%204.png" alt="Logo" height="60"
-        class="d-inline-block align-top">
+      <img src="assets/logo plante.png" alt="Logo" height="60" class="d-inline-block align-top">
     </a>
+    <div class="navbar-collapse justify-content-center">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Entrez votre code postale" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+      </form>
+    </div>
     <div class="ml-auto">
       <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
@@ -23,76 +27,51 @@
     </div>
   </nav>
 
-
-
-
   <div class="container mt-2">
     <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/plante.jpg" class="card-img-top" alt="Plant Image">
-          <div class="card-body">
-            <h5 class="card-title">Plant Name 1</h5>
-            <p class="card-text">Plant Description 1</p>
-            <a routerLink="/publication" class="btn btn-primary">View Details</a>
+      <div class="col-md-12">
+        <div class="publication-section">
+          <h2>Publications près de chez vous</h2>
+          <div class="row">
+            <div class="col-md-4" *ngFor="let publication of publications">
+              <div class="card">
+                <img src="{{ publication.image }}" class="card-img-top" alt="Plant Image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ publication.name }}</h5>
+                  <p class="card-text">{{ publication.description }}</p>
+                  <p class="card-text">État : <span [ngClass]="{'text-success': publication.status === 'bon', 'text-danger': publication.status !== 'bon'}">{{ publication.status ? 'En bon état' : 'Non en bon état' }}</span></p>
+                  <a routerLink="/publication" class="btn btn-primary">Voir les détails</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="botanists-section">
+          <h2>Botanistes recommandés</h2>
+          <div class="botanists-list">
+            <div class="botanist-item" *ngFor="let botanist of botanists">
+              {{ botanist.firstName }} {{ botanist.lastName }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="add-plant-box">
+          <h2>Ajouter une publication</h2>
+          <p>Vous souhaitez ajouter une nouvelle publication ? Cliquez sur le bouton ci-dessous pour accéder au formulaire.</p>
+          <a routerLink="/ajouterpublication" class="btn btn-primary">Ajouter une publication</a>
+        </div>
+      </div>
+    </div>
   </div>
-  
 
 </body>
 

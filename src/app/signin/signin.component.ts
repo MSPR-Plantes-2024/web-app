@@ -20,7 +20,8 @@ export class SigninComponent {
     if (this.signinForm.valid) {
       const userData = this.signinForm.value;
       console.log('User signed in:', userData);
-      // Add logic to handle signin (e.g., authentication)
+      
+      
     }
   }
 }

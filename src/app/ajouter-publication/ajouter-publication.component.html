@@ -1,0 +1,27 @@
+<!-- ajouter-publication.component.html -->
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Ajouter une publication</h2>
+      </div>
+      <div class="card-body">
+        <form (submit)="ajouterPublication()">
+          <div class="form-group">
+            <label for="nomPlante">Nom de la publication</label>
+            <input type="text" class="form-control" id="nomPlante" [(ngModel)]="nomPlante" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" [(ngModel)]="description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imagePlante">Sélectionner une ou plusieurs images</label>
+            <input type="file" class="form-control-file" id="imagePlante" (change)="onFileSelected($event)" accept="image/*" multiple>
+            <small id="imagePlanteHelp" class="form-text text-muted">Vous pouvez sélectionner plusieurs images en même temps.</small>
+          </div>
+          <button type="submit" class="btn btn-success">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

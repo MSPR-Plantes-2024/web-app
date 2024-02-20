@@ -1,21 +1,22 @@
 .navbar {
-  background-color: #f8f9fa;
-  box-shadow: 0 4px 6px -6px #222; 
+  background-color: #f8f9fa; /* Light background color */
+  box-shadow: 0 4px 6px -6px #222; /* Slight shadow */
 }
 
 .navbar-brand {
   margin-left: 20px;
   font-weight: bold;
-  color: #005307; 
+  color: #005307; /* Green color for the brand */
 }
 
 .navbar-brand:hover {
-  color: #003d00; 
+  color: #003d00; /* Darker green color on hover */
 }
 
 body {
-  font-family: Arial, sans-serif;
+  overflow: hidden; /* Hide scrollbar */
 }
+
 
 .navbar {
   box-shadow: 0 4px 6px -6px #222;

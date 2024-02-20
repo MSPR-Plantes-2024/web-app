@@ -9,17 +9,19 @@ import { UserInterface } from './interfaces/user-interface';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  signupForm: FormGroup = this.fb.group({
-    Nom: ['', Validators.required],
-    Prénom: ['', Validators.required],
-    Email: ['', [Validators.required, Validators.email]],
-    motDepasse: ['', Validators.required]
-  });
-  user: UserInterface | undefined;
-  constructor(private fb: FormBuilder, private userService: UserApiService) { }
+  signupForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private userService: UserApiService) {
+    this.signupForm = this.fb.group({
+      Nom: ['', Validators.required],
+      Prénom: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      motDepasse: ['', Validators.required],
+      statut: ['']
+    });
+  }
 
   ngOnInit() {
-    // No need to initialize the form here if you're initializing it inline
   }
 
   submit() {
@@ -29,10 +31,16 @@ export class SignupComponent implements OnInit {
       // Add logic to handle form submission (e.g., send data to a server)
     }
   }
-  getUser(id: number){
-  this.userService.recupererUser(id).subscribe((user)=>{
-this.user = user;
-console.log("user " + this.user.phoneNumber);
-  } );
+
+  setParticulier() {
+    this.signupForm.patchValue({
+      statut: 'Particulier'
+    });
+  }
+
+  setProfessional() {
+    this.signupForm.patchValue({
+      statut: 'Professional'
+    });
   }
 }
