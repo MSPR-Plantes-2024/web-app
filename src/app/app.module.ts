@@ -11,6 +11,8 @@ import { PublicationComponent } from './publication/publication.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AjouterPublicationComponent } from './ajouter-publication/ajouter-publication.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { PublicationsService } from './publications.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -31,9 +33,10 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [PublicationsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

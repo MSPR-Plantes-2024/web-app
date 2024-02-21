@@ -1,23 +1,24 @@
 <!-- messagerie.component.html -->
+
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h2>Conversation avec [Nom de l'utilisateur]</h2>
-        <div class="messages">
-          <div class="message received">
-            <p>Message reçu 1</p>
-          </div>
-          <div class="message sent">
-            <p>Message envoyé 1</p>
-          </div>
-          <!-- Ajoutez d'autres messages ici -->
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2>Conversation avec [Nom de l'utilisateur]</h2>
+      <div class="messages">
+        <div class="message received">
+          <p>Message reçu 1</p>
         </div>
-        <form (submit)="envoyerMessage()">
-          <div class="form-group">
-            <textarea class="form-control" id="message" rows="3" placeholder="Entrez votre message"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success">Envoyer</button>
-        </form>
+        <div class="message sent">
+          <p>Message envoyé 1</p>
+        </div>
+        <!-- Ajoutez d'autres messages ici -->
       </div>
+      <form (submit)="envoyerMessage()">
+        <div class="form-group">
+          <textarea class="form-control" id="message" rows="3" placeholder="Entrez votre message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Envoyer</button>
+      </form>
     </div>
   </div>
+</div>

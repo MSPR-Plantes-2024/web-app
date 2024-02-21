@@ -1,30 +1,20 @@
 .navbar {
-  background-color: #f8f9fa; /* Light background color */
-  box-shadow: 0 4px 6px -6px #222; /* Slight shadow */
+  background-color: #f8f9fa; /* Couleur de fond claire */
+  box-shadow: 0 4px 6px -6px #222; /* Légère ombre */
 }
 
 .navbar-brand {
   margin-left: 20px;
   font-weight: bold;
-  color: #005307; /* Green color for the brand */
+  color: #005307; /* Couleur verte pour la marque */
 }
 
 .navbar-brand:hover {
-  color: #003d00; /* Darker green color on hover */
+  color: #003d00; /* Couleur verte plus foncée au survol */
 }
 
 body {
-  overflow: hidden; /* Hide scrollbar */
-}
-
-
-.navbar {
-  box-shadow: 0 4px 6px -6px #222;
-}
-
-.navbar-brand {
-  margin-left: 20px;
-  font-weight: bold;
+  overflow: hidden; /* Masquer la barre de défilement */
 }
 
 .user-picture img {
@@ -34,13 +24,26 @@ body {
   border-radius: 50%;
   border: 4px solid #fff;
   box-shadow: 0 4px 6px -6px #222;
+  margin-bottom: 20px; /* Ajout d'une marge en bas */
+}
+
+.user-details {
+  margin-bottom: 20px; /* Ajout d'une marge en bas */
 }
 
 .user-details h3 {
   color: #333333;
+  margin-bottom: 10px; /* Ajout d'une marge en bas */
 }
 
 .user-details p {
-  margin-bottom: 5px;
+  margin-bottom: 10px; /* Ajout d'une marge en bas */
 }
 
+.publications {
+  margin-top: 30px; /* Ajout d'un espacement en haut */
+}
+
+.add-plant-box {
+  margin-top: 30px; /* Ajout d'un espacement en haut */
+}

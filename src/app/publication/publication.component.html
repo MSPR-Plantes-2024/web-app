@@ -1,62 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
+  </a>
+  <div class="navbar-collapse justify-content-center">
+   
+  </div>
+  <div class="ml-auto">
+    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
+    <a class="navbar-brand" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
+  </div>
+</nav>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publication Details</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="assets/logo plante.png" alt="Logo" height="60"
-        class="d-inline-block align-top">
-    </a>
-    <div class="ml-auto">
-      <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
-        [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
-      <a class="navbar-brand" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
-    </div>
-  </nav>
-
-
-  <div class="container publication-details">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <div class="publication-image">
-          <img src="assets/plante.jpg" alt="Plant Image">
-        </div>
-        <div class="description">
-          <h3>Description</h3>
-          <p>Description de la plante</p>
-          fhjdoisdjfdoisfjsodifjosd
-        </div>
-        <div class="message-form">
-          <h3>Envoyer un message</h3>
-          <form>
-            <div class="form-group">
-              <label for="name">Nom</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name">
-            </div>
-            <div class="form-group">
-              <label for="email">Votre Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </div>
-      </div> 
+<div class="container publication-details" *ngIf="publication && plants">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="publication-image">
+        <img src="{{ plants[0]?.picture?.url }}" alt="Image de la plante">
+      </div>
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{ publication.description }}</p>
+      </div>
+      <div class="plant-info">
+        <h3>Informations sur les plantes</h3>
+        <ul>
+          <li *ngFor="let plant of plants">
+            <p *ngIf="plant.name">Nom de la plante : {{ plant.name }}</p>
+            description:
+            <p *ngIf="plant.description"> {{ plant.description }}</p>
+            <p *ngIf="plant.plantCondition?.name">État de la plante : {{ plant.plantCondition.name }}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="user-info">
+        <h3>Informations sur le propriétaire</h3>
+        <p *ngIf="publication.user">Nom : {{ publication.user.firstName }} {{ publication.user.lastName }}</p>
+        <p *ngIf="publication.user?.userType">Type d'utilisateur : {{ publication.user.userType.name }}</p>
+      </div>
+      <div class="message-form">
+        <h3>Envoyer un message au propriétaire</h3>
+        <form>
+          <!-- Formulaire de message -->
+        </form>
+      </div>
     </div>
   </div>
-
-</body>
-
-</html>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { PublicationsService } from '../publications.service'; // Assurez-vous d'importer correctement le service
+import { Router } from '@angular/router'; // Importez le Router
 
 @Component({
   selector: 'app-publications',
@@ -10,16 +11,16 @@ export class PublicationsComponent implements OnInit {
   publications: any[] = [];
   botanists: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private publicationsService: PublicationsService, private router: Router) { } // Injectez le Router
 
   ngOnInit() {
-     
-    this.http.get<any[]>('URL_DE_VOTRE_API_PUBLICATIONS').subscribe(data => {
+    this.publicationsService.getPublications().subscribe((data: any[]) => { 
       this.publications = data;
     });
+  }
 
-     this.http.get<any[]>('URL_DE_VOTRE_API_BOTANISTS').subscribe(data => {
-      this.botanists = data;
-    });
+   goToPublicationDetails(publicationId: number) {
+    // Redirige vers la page de détails de la publication avec l'ID de la publication
+    this.router.navigate(['/publication', publicationId]);
   }
 }

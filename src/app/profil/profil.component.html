@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
+  <title>Profil</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  
 </head>
 
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="assets/logo plante.png" alt="Logo" height="60" class="d-inline-block align-top">
+      <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
     </a>
     <div class="ml-auto">
       <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']" style="color: #005307;">Mon
@@ -22,16 +24,15 @@
   </nav>
 
   <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 text-center">
-        <div class="user-picture">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="text-center user-picture">
           <img src="assets/images.jpeg" alt="User Avatar" class="img-fluid rounded">
         </div>
         <div class="user-details mt-3">
-          <h3>{{ user.firstName }}</h3>
-          <h3>{{ user.lastName }}</h3>
+          <h3>{{ user.firstName }} {{ user.lastName }}</h3>
           <p>Email: {{ user.email }}</p>
-          <button class="btn btn-success" (click)="modifierCoordonnees()">Modifier mes coordonnées</button>
+          <button class="btn btn-success btn-block" (click)="modifierCoordonnees()">Modifier mes coordonnées</button>
         </div>
         <div class="modification-form" *ngIf="showModificationForm">
           <form (submit)="enregistrerCoordonnees()">
@@ -44,11 +45,11 @@
             <div class="form-group">
               <input type="email" class="form-control" placeholder="Nouvel email" [(ngModel)]="nouvelEmail">
             </div>
-            <button type="submit" class="btn btn-success">Enregistrer</button>
+            <button type="submit" class="btn btn-success btn-block">Enregistrer</button>
           </form>
         </div>
-        <div class="publications mt-4">
-          <h2>Mes Publications</h2>
+        <div class="publications">
+          <h2 class="text-center mb-4">Mes Publications</h2>
           <div class="list-group">
             <a *ngFor="let publication of user.publications" class="list-group-item">
               <h5 class="mb-1">{{ publication.date }}</h5>
@@ -56,15 +57,11 @@
             </a>
           </div>
         </div>
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <div class="add-plant-box">
-              <h2>Ajouter une publication</h2>
-              <p>Vous souhaitez ajouter une nouvelle publication ? Cliquez sur le bouton ci-dessous pour accéder au
-                formulaire.</p>
-              <a routerLink="/ajouterpublication" class="btn btn-success">Ajouter une publication</a>
-            </div>
-          </div>
+        <div class="add-plant-box">
+          <h2 class="text-center mb-4">Ajouter une publication</h2>
+          <p class="text-center">Vous souhaitez ajouter une nouvelle publication ? Cliquez sur le bouton ci-dessous pour
+            accéder au formulaire.</p>
+          <a routerLink="/ajouterpublication" class="btn btn-success btn-block">Ajouter une publication</a>
         </div>
       </div>
     </div>

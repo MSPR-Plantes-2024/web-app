@@ -12,7 +12,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="assets/logo plante.png" alt="Logo" height="60" class="d-inline-block align-top">
+      <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
     </a>
     <div class="navbar-collapse justify-content-center">
       <form class="form-inline my-2 my-lg-0">
@@ -34,13 +34,9 @@
           <h2>Publications près de chez vous</h2>
           <div class="row">
             <div class="col-md-4" *ngFor="let publication of publications">
-              <div class="card">
-                <img src="{{ publication.image }}" class="card-img-top" alt="Plant Image">
+              <div class="card" [routerLink]="['/publication', publication.id]">
                 <div class="card-body">
-                  <h5 class="card-title">{{ publication.name }}</h5>
-                  <p class="card-text">{{ publication.description }}</p>
-                  <p class="card-text">État : <span [ngClass]="{'text-success': publication.status === 'bon', 'text-danger': publication.status !== 'bon'}">{{ publication.status ? 'En bon état' : 'Non en bon état' }}</span></p>
-                  <a routerLink="/publication" class="btn btn-primary">Voir les détails</a>
+                  <p class="card-text">{{ publication.id }}</p>
                 </div>
               </div>
             </div>

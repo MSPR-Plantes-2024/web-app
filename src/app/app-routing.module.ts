@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'publication', component: PublicationComponent},
   { path: 'ajouterpublication', component: AjouterPublicationComponent},
   { path: 'messagerie', component: MessagerieComponent},
+  { path: 'publication/:id', component: PublicationComponent }, 
+
 
 
   

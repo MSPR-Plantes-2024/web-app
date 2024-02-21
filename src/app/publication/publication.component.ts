@@ -1,10 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PublicationsService } from '../publications.service';
 
 @Component({
   selector: 'app-publication',
   templateUrl: './publication.component.html',
-  styleUrl: './publication.component.css'
+  styleUrls: ['./publication.component.css']
 })
-export class PublicationComponent {
+export class PublicationComponent implements OnInit {
+  publication: any;
+  plants: any[] = [];
+  pictures: any;
 
+
+  constructor(private route: ActivatedRoute, private publicationsService: PublicationsService) { }
+
+  ngOnInit(): void {
+    const publicationIdParam = this.route.snapshot.paramMap.get('id');
+
+    if (publicationIdParam !== null) {
+      const publicationId = +publicationIdParam;
+
+      this.publicationsService.getPublicationById(publicationId).subscribe((data: any) => {
+        this.publication = data;
+        this.plants = data.plants;
+        this.pictures = data.pictures ;
+          
+      });
+    }
+  }
 }
