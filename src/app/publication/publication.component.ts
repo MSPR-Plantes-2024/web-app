@@ -10,8 +10,7 @@ import { PublicationsService } from '../publications.service';
 export class PublicationComponent implements OnInit {
   publication: any;
   plants: any[] = [];
-  pictures: any;
-
+  owner: any;
 
   constructor(private route: ActivatedRoute, private publicationsService: PublicationsService) { }
 
@@ -24,8 +23,12 @@ export class PublicationComponent implements OnInit {
       this.publicationsService.getPublicationById(publicationId).subscribe((data: any) => {
         this.publication = data;
         this.plants = data.plants;
-        this.pictures = data.pictures ;
-          
+        
+         const ownerId = data.publisherId;
+
+
+         this.owner = data.users;
+        
       });
     }
   }

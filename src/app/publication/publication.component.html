@@ -3,7 +3,7 @@
     <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
   </a>
   <div class="navbar-collapse justify-content-center">
-   
+  
   </div>
   <div class="ml-auto">
     <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
@@ -33,11 +33,13 @@
           </li>
         </ul>
       </div>
-      <div class="user-info">
+      <div class="plant-info">
         <h3>Informations sur le propriétaire</h3>
-        <p *ngIf="publication.user">Nom : {{ publication.user.firstName }} {{ publication.user.lastName }}</p>
-        <p *ngIf="publication.user?.userType">Type d'utilisateur : {{ publication.user.userType.name }}</p>
+        
+       
       </div>
+   
+      
       <div class="message-form">
         <h3>Envoyer un message au propriétaire</h3>
         <form>
