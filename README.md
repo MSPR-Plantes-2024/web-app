@@ -6,8 +6,8 @@
 Ce projet contient le code source de l'application frontend de notre application Web. Il s'agit de la partie de l'application qui sera exécutée dans le navigateur Web des utilisateurs.
 
 ## Description
-qsqs
-Notre application frontend est développée en utilisant le framework Angular. Elle offre une interface utilisateur conviviale permettant aux utilisateurs d'accéder à différentes fonctionnalités de notre application.
+ 
+Notre application Arosaje est développée en utilisant le framework Angular. Elle offre une interface utilisateur conviviale permettant aux utilisateurs d'accéder à différentes fonctionnalités de notre application.
 
 ## Fonctionnalités
 
@@ -29,7 +29,7 @@ Avant de commencer à travailler sur ce projet, assurez-vous d'avoir les éléme
 
 1. Clonez ce dépôt sur votre machine :
    ```bash
-   git clone https://github.com/votre-utilisateur/webapp-frontend.git
+   git clone https://github.com/MSPR-Plantes-2024/web-app.git
 
 2. Accédez au répertoire du projet :
 
@@ -50,5 +50,10 @@ Poussez votre branche (git push origin feature/ajouter-nouvelle-fonctionnalité)
 Soumettez une demande de tirage (Pull Request)
 
 
-Auteurs
-Hosni Hamdi
+## Auteur
+
+Hosni HAMDI
+
+## Licence
+
+Hosni HAMDI
