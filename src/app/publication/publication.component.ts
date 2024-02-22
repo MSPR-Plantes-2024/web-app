@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublicationsService } from '../publications.service';
+import { PublicationCreation } from './interfaces/publication-creation-interface';
+import { UserService } from '../user.service';
+import { User } from './interfaces/user-interface';
 
 @Component({
   selector: 'app-publication',
@@ -8,11 +11,13 @@ import { PublicationsService } from '../publications.service';
   styleUrls: ['./publication.component.css']
 })
 export class PublicationComponent implements OnInit {
-  publication: any;
+  publication!: PublicationCreation;
   plants: any[] = [];
-  owner: any;
+  idUser!: number;
+  user!: User;
 
-  constructor(private route: ActivatedRoute, private publicationsService: PublicationsService) { }
+  constructor(private route: ActivatedRoute, private publicationsService: PublicationsService,
+     private userService : UserService) { }
 
   ngOnInit(): void {
     const publicationIdParam = this.route.snapshot.paramMap.get('id');
@@ -21,15 +26,16 @@ export class PublicationComponent implements OnInit {
       const publicationId = +publicationIdParam;
 
       this.publicationsService.getPublicationById(publicationId).subscribe((data: any) => {
+        
         this.publication = data;
+        console.log(this.publication);
         this.plants = data.plants;
-        
-         const ownerId = data.publisherId;
-
-
-         this.owner = data.users;
-        
-      });
+        //this.idUser = data.publisher.id;
+      });      
     }
+    //console.log(this.idUser);
+    // this.userService.getUserById(this.idUser).subscribe((user: User) => {
+    //   this.user =  user;
+    // });
   }
 }

@@ -6,12 +6,12 @@
 Ce projet contient le code source de l'application frontend de notre application Web. Il s'agit de la partie de l'application qui sera exécutée dans le navigateur Web des utilisateurs.
 
 ## Description
-
+qsqs
 Notre application frontend est développée en utilisant le framework Angular. Elle offre une interface utilisateur conviviale permettant aux utilisateurs d'accéder à différentes fonctionnalités de notre application.
 
 ## Fonctionnalités
 
-- Authentification
+- Authentification/inscription des utilisateurs
 - Affichage des publications
 - Ajout de nouvelles publications
 - Visualisation des détails des publications
