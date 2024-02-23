@@ -6,32 +6,36 @@
       </div>
       <div class="card-body">
         <form [formGroup]="formPublication">
-        
           <div class="form-group">
             <label for="description" for="description">Description</label>
             <textarea class="form-control"
              id="description"
               rows="3" formControlName="description"
                required>
-          </textarea>
+            </textarea>
           </div>
           <div class="form-group">
-            <label for="addressId">Adresse</label>
-            <input type="text"  id="addressId" formControlName="addressId">
+            <label for="address">Adresse: </label>
+            <select formControlName="address" id="address">
+              <option *ngFor="let adress of addressesUser" [ngValue]="adress.id">
+                {{ adress.postalAddress }} - {{ adress.city }} - {{ adress.zipCode }}
+              </option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="publisherId">publisherId</label>
-            <input type="text"  id="publisherId" formControlName="publisherId">
-          </div>
-          <div formArrayName="plantsId">
-            <label for="plantsId">Plants ID</label>
-            <div *ngFor="let plantIdControl of plantsId.controls; let i = index" class="input-group mb-3">
-              <input type="text" class="form-control" [formControlName]="i">
-              <div class="input-group-append">
-                <button type="button" class="btn btn-outline-danger" (click)="removePlantId(i)">Remove</button>
+          <div>
+            <h2>Add Plant</h2>
+            <div formArrayName="selectedPlants">
+              <div *ngFor="let plantControl of selectedPlants.controls; let i = index">
+                <input type="text" [formControlName]="i">
               </div>
             </div>
-            <button type="button" class="btn btn-outline-primary" (click)="addPlantId()">Add Plant ID</button>
+            <div>
+              <label>Select Plant:</label>
+              <select (change)="onPlantSelected($event)">
+                <option *ngFor="let plant of plantsUser" [value]="plant.id">{{ plant.name }}</option>
+              </select>
+            </div>
+            <button type="button" (click)="onAddPlant()">Add Plant</button>
           </div>
   
           <button type="button" (click)="ajouterPublication()" class="btn btn-success">Ajouter publication</button>
