@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ProfilComponent {
   user = {
-    firstName: 'Hosni',
-    lastName: 'Hamdi',
+    firstName: 'user',
+    lastName: 'user',
     email: 'Hosnihamdi@example.com',
     publications: [
       { date: '2024-01-01', description: 'Description de la publication 1' },

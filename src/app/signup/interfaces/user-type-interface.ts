@@ -1,4 +1,4 @@
-export interface UserTypeInterface{
-    
-
+export class UserTypeInterface {
+    id!: number;
+    name!: string;
 }

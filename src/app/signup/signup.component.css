@@ -63,3 +63,13 @@
   height: 60px;
   width: 100px;
     }
+
+    .alert {
+      opacity: 1; /* Définit l'opacité initiale à 1 */
+      transition: opacity 0.5s ease-in-out; /* Ajoute une transition à la propriété opacity */
+    }
+    
+    .hide {
+      opacity: 0; /* Définit l'opacité à 0 pour masquer l'alerte */
+    }
+    

@@ -1,12 +1,11 @@
 import { UserTypeInterface } from "./user-type-interface";
 
 
-export interface UserInterface{
-	id: number;
-	firstName: string;
-	lastName: String ;
-	phoneNumber: number;
-	email: string;
-    password: string;
-	userType: UserTypeInterface;
+export class UserInterface{
+	id!: number;
+	firstName!: string;
+	lastName!: String ;
+	email!: string;
+    password!: string;
+	userType!: UserTypeInterface;
 }

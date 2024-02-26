@@ -18,8 +18,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
     SigninComponent,
+    SignupComponent,
     ProfilComponent,
     PublicationsComponent,
     PublicationComponent,

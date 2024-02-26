@@ -36,7 +36,7 @@
             <div class="col-md-4" *ngFor="let publication of publications">
               <div class="card" [routerLink]="['/publication', publication.id]">
                 <div class="card-body">
-                  <p class="card-text">{{ publication.id }}</p>
+                  <p class="card-text">{{ publication.description }}</p>
                 </div>
               </div>
             </div>
