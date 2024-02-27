@@ -1,46 +1,55 @@
 <!-- ajouter-publication.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
+  </a>
+  <div class="navbar-collapse justify-content-center">
+  </div>
+  <div class="ml-auto">
+    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
+    <a class="navbar-brand" routerLink="/publications" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
+  </div>
+</nav>
+
 <div class="container mt-4">
-    <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Ajouter une publication</h2>
-      </div>
-      <div class="card-body">
-        <form [formGroup]="formPublication">
-          <div class="form-group">
-            <label for="description" for="description">Description</label>
-            <textarea class="form-control"
-             id="description"
-              rows="3" formControlName="description"
-               required>
-            </textarea>
-          </div>
-          <div class="form-group">
-            <label for="address">Adresse: </label>
-            <select formControlName="address" id="address">
-              <option *ngFor="let adress of addressesUser" [ngValue]="adress.id">
-                {{ adress.postalAddress }} - {{ adress.city }} - {{ adress.zipCode }}
-              </option>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Ajouter une publication</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formPublication">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="5" formControlName="description" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="address">Adresse</label>
+            <select class="form-control" formControlName="address" id="address">
+              <option *ngFor="let adress of addressesUser" [ngValue]="adress.id">{{ adress.postalAddress }} - {{ adress.city }} - {{ adress.zipCode }}</option>
             </select>
           </div>
-          <div>
-            <h2>Add Plant</h2>
-            <div formArrayName="selectedPlants">
-              <div *ngFor="let plantControl of selectedPlants.controls; let i = index">
-                <input type="text" [formControlName]="i">
-              </div>
-            </div>
-            <div>
-              <label>Select Plant:</label>
-              <select (change)="onPlantSelected($event)">
+          <div class="form-group col-md-6">
+            <label for="plant">Plante</label>
+            <div class="input-group">
+              <select class="custom-select" formControlName="plant" id="plant">
                 <option *ngFor="let plant of plantsUser" [value]="plant.id">{{ plant.name }}</option>
               </select>
+              <div class="input-group-append">
+                <button class="btn btn-outline-success" type="button" (click)="addPlantToForm()">Ajouter</button>
+              </div>
             </div>
-            <button type="button" (click)="onAddPlant()">Add Plant</button>
           </div>
-  
-          <button type="button" (click)="ajouterPublication()" class="btn btn-success">Ajouter publication</button>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="selectedPlants">Plantes sélectionnées :</label>
+          <ul class="list-unstyled">
+            <li *ngFor="let plant of selectedPlants.controls">{{ plant.value }}</li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-success" (click)="ajouterPublication()">Ajouter publication</button>
+      </form>
     </div>
   </div>
-  
+</div>

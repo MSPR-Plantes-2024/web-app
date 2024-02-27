@@ -1,20 +1,20 @@
 .navbar {
-  background-color: #f8f9fa; /* Couleur de fond claire */
-  box-shadow: 0 4px 6px -6px #222; /* Légère ombre */
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 6px -6px #222;
 }
 
 .navbar-brand {
   margin-left: 20px;
   font-weight: bold;
-  color: #005307; /* Couleur verte pour la marque */
+  color: #005307;
 }
 
 .navbar-brand:hover {
-  color: #003d00; /* Couleur verte plus foncée au survol */
+  color: #003d00;
 }
 
 body {
-  overflow: hidden; /* Masquer la barre de défilement */
+  overflow: hidden;
 }
 
 .user-picture img {
@@ -24,26 +24,76 @@ body {
   border-radius: 50%;
   border: 4px solid #fff;
   box-shadow: 0 4px 6px -6px #222;
-  margin-bottom: 20px; /* Ajout d'une marge en bas */
+  margin-bottom: 20px;
 }
 
 .user-details {
-  margin-bottom: 20px; /* Ajout d'une marge en bas */
+  margin-bottom: 20px;
 }
 
 .user-details h3 {
   color: #333333;
-  margin-bottom: 10px; /* Ajout d'une marge en bas */
+  margin-bottom: 10px;
 }
 
 .user-details p {
-  margin-bottom: 10px; /* Ajout d'une marge en bas */
+  margin-bottom: 10px;
 }
 
 .publications {
-  margin-top: 30px; /* Ajout d'un espacement en haut */
+  margin-top: 30px;
 }
 
 .add-plant-box {
-  margin-top: 30px; /* Ajout d'un espacement en haut */
+  margin-top: 30px;
+}
+.box {
+  background-color: #f8f9fa; /* Couleur de fond */
+  border: 1px solid #ced4da; /* Bordure */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 20px; /* Espacement intérieur */
+  box-shadow: 0 4px 6px -6px #222; /* Légère ombre */
+}
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 300px; /* Définir une hauteur fixe pour toutes les cardbox */
+}
+
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-text {
+  flex: 1;
+  margin-bottom: 1rem; /* Ajout d'une marge en bas pour séparer la description du bouton */
+}
+
+.card-buttons {
+  margin-top: auto; /* Place les boutons en bas de la carte */
+}
+
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
 }

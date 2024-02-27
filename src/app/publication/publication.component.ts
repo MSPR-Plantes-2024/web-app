@@ -28,14 +28,10 @@ export class PublicationComponent implements OnInit {
       this.publicationsService.getPublicationById(publicationId).subscribe((data: any) => {
         
         this.publication = data;
-        console.log(this.publication);
-        this.plants = data.plants;
+         this.plants = data.plants;
         //this.idUser = data.publisher.id;
       });      
     }
-    //console.log(this.idUser);
-    // this.userService.getUserById(this.idUser).subscribe((user: User) => {
-    //   this.user =  user;
-    // });
+  
   }
 }

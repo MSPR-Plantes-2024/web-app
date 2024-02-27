@@ -16,9 +16,10 @@
     </a>
     <div class="navbar-collapse justify-content-center">
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Entrez votre code postale" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+        <input class="form-control mr-sm-2" type="search" name="codePostal" placeholder="Entrez votre code postal" aria-label="Search" [(ngModel)]="codePostal">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="RechercheparZip()">Rechercher</button>
       </form>
+      
     </div>
     <div class="ml-auto">
       <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
@@ -31,12 +32,16 @@
     <div class="row">
       <div class="col-md-12">
         <div class="publication-section">
-          <h2>Publications près de chez vous</h2>
-          <div class="row">
-            <div class="col-md-4" *ngFor="let publication of publications">
+          <h2>Publications </h2>
+          <br>
+          <div   class="row"  >
+            <div class="col-md-4"  *ngFor="let publication of publications" >
               <div class="card" [routerLink]="['/publication', publication.id]">
+                <img src="assets/Miniature-Jardin-Camifolia.jpg" class="card-img-top" alt="Image de la publication">
                 <div class="card-body">
                   <p class="card-text">{{ publication.description }}</p>
+                  <p class="card-text">Code Postal :{{ publication.address.zipCode }}</p>
+                  <p class="card-text">Ville : {{ publication.address.city }}</p>
                 </div>
               </div>
             </div>
