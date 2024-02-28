@@ -11,8 +11,10 @@
       <div class="col-md-6">
         <div class="signin-form">
           <h2>Connexion</h2>
-          <form [formGroup]="signinForm" (ngSubmit)="submit()">
-            
+          <form [formGroup]="signinForm" >
+            <div class="alert alert-success" role="alert" *ngIf="registrationSuccess" [ngClass]="{'hide': !registrationSuccess}">
+              Connexion réussie!
+            </div>
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="email" id="email" class="form-control" formControlName="email" required>
@@ -21,7 +23,7 @@
               <label for="password">Mot de passe:</label>
               <input type="password" id="password" class="form-control" formControlName="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Se connecter</button>
+            <button type="button" (click)="SeConnecter()" class="btn btn-primary">Se connecter</button>
 
             <br>
         <br>

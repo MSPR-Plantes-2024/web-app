@@ -2,12 +2,9 @@
   <a class="navbar-brand" href="#">
     <img src="assets/LOGO.png" alt="Logo" height="60" class="d-inline-block align-top">
   </a>
-  <div class="navbar-collapse justify-content-center">
-
-  </div>
+  <div class="navbar-collapse justify-content-center"></div>
   <div class="ml-auto">
-    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
+    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
     <a class="navbar-brand" routerLink="/publications" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
   </div>
 </nav>
@@ -18,21 +15,31 @@
       <div class="text-center user-picture">
         <img src="assets/images.jpeg" alt="User Avatar" class="img-fluid rounded">
       </div>
-      <div class="user-details mt-3 text-center" >
+      <div>
+        <label>Nom: </label>
+        <p>{{userConnectee.lastName}}</p>
+
+        <label>Prénom: </label>
+        <p>{{userConnectee.firstName}}</p>
+
+        <label>Email: </label>
+        <p>{{userConnectee.email}}</p>
+      </div>
+      <div class="user-details mt-3 text-center">
         <button class="btn btn-success" (click)="modifierCoordonnees()">Modifier mes coordonnées</button>
       </div>
       <div class="modification-form mt-3" *ngIf="showModificationForm">
-        <form (submit)="enregistrerCoordonnees()">
+        <form [formGroup]="coordonneesForm">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nouveau prénom" [(ngModel)]="nouveauPrenom">
+            <input type="text" class="form-control" placeholder="Nouveau nom" formControlName="nom">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nouveau nom" [(ngModel)]="nouveauNom">
+            <input type="text" class="form-control" placeholder="Nouveau prénom" formControlName="prenom">
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="Nouvel email" [(ngModel)]="nouvelEmail">
+            <input type="email" class="form-control" placeholder="Nouvel email" formControlName="email">
           </div>
-          <button type="submit" class="btn btn-success btn-block">Enregistrer</button>
+          <button type="button" (click)="enregistrerCoordonnees()" class="btn btn-success btn-block">Enregistrer</button>
         </form>
       </div>
       <div class="publications mt-4">
@@ -51,6 +58,10 @@
           </div>
         </div>
       </div>
+      <div class="gardienages mt-4">
+        <h2 class="text-center mb-4">Mes Gardiennages</h2>
+        <!-- Ajoutez ici votre code pour afficher les gardiennages de l'utilisateur -->
+      </div>
       <div class="add-plant-box mt-4 text-center">
         <div class="container">
           <div class="box">
@@ -60,8 +71,6 @@
           </div>
         </div>
       </div>
-      
-      </div>
     </div>
   </div>
- 
+</div>

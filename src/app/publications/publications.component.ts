@@ -11,7 +11,7 @@ import { PublicationCreation } from '../publication/interfaces/publication-creat
 export class PublicationsComponent implements OnInit {
   publications?: PublicationCreation[];
   botanists: any[] = [];
-  codePostal: string = ''; // Ajoutez cette propriété pour stocker le code postal saisi
+  city: string = ''; // Ajoutez cette propriété pour stocker le code postal saisi
 
   constructor(private publicationsService: PublicationsService, private router: Router) { } // Injectez le Router
 
@@ -29,9 +29,9 @@ export class PublicationsComponent implements OnInit {
 
   async RechercheparZip() {
     try {
-      if (this.codePostal) {
+      if (this.city) {
         // Filtrer les publications en fonction du code postal
-        this.publications = this.publications?.filter(publication => publication.address.zipCode === this.codePostal);
+        this.publications = this.publications?.filter(publication => publication.address.city === this.city);
       } else {
         // Si aucun code postal n'est saisi, réinitialisez la liste des publications
         await this.initialiserPublications();

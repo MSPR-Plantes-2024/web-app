@@ -8,7 +8,7 @@
   <div class="ml-auto">
     <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
-    <a class="navbar-brand" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
+    <a class="navbar-brand" routerLink="/publications" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
   </div>
 </nav>
 
@@ -24,7 +24,7 @@
           <p class="text-muted">{{ publication.description }}</p>
         </div>
         <div class="plant-info mb-4">
-          <h3 class="text-dark">Informations sur les plantes</h3>
+          <h3 class="text-dark">Informations sur les plantes publiée dans la publication</h3>
           <ul class="list-unstyled">
             <li *ngFor="let plant of plants" class="mb-4">
               <h5 class="text-primary">Nom</h5>
@@ -33,11 +33,13 @@
               <p class="text-muted mb-2">{{ plant.description }}</p>
               <h5 class="text-primary">État de la plante</h5>
               <p class="font-weight-bold mb-2">{{ plant.plantCondition?.name }}</p>
+              <p>------------------------------------------------------------------------</p>
+
             </li>
           </ul>
         </div>
         <div class="message-form">
-          <h3 class="text-dark">Envoyer un message au propriétaire</h3>
+          <h3 class="text-dark">Réserver la publication</h3>
           <form>
             <!-- Formulaire de message -->
           </form>

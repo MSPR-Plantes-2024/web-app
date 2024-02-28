@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicationCreation } from '../publication/interfaces/publication-creation-interface';
 import { PublicationsService } from '../publications.service';
+import { UserService } from '../user.service';
+import { UserInterface } from '../signup/interfaces/user-interface';
+import { User } from '../publication/interfaces/user-interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profil',
@@ -9,25 +13,34 @@ import { PublicationsService } from '../publications.service';
 })
 export class ProfilComponent implements OnInit {
   publicationsUser?: PublicationCreation[];
+  userConnectee!: User;
 
   showModificationForm: boolean = false;
-  nouveauPrenom: string = '';
-  nouveauNom: string = '';
-  nouvelEmail: string = '';
 
-  constructor(private publicationService: PublicationsService) {
-    // Ici, vous pouvez appeler vos API pour récupérer les publications et les plantes de l'utilisateur
-    // Assurez-vous que les données sont correctement typées
+  coordonneesForm: FormGroup;
+
+  constructor(private publicationService: PublicationsService, private userService: UserService, private fb: FormBuilder) {
+    this.coordonneesForm = this.fb.group({
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
   
-  ngOnInit(): void {
+ ngOnInit() {
+    this.chargerUtilisateur();
     this.chargerPublicationsUtilisateur();
   }
 
-  chargerPublicationsUtilisateur() {
-    this.publicationService.getPublicationsByUserId(1).subscribe(data => {
-      this.publicationsUser = data;
-    });
+chargerUtilisateur() {
+    this.userService.getUserById(2).subscribe(user => {
+      this.userConnectee = user;
+      this.coordonneesForm.patchValue({
+        nom: user.lastName,
+        prenom: user.firstName,
+        email: user.email
+      });
+    });    
   }
 
   modifierCoordonnees() {
@@ -35,20 +48,33 @@ export class ProfilComponent implements OnInit {
   }
 
   enregistrerCoordonnees() {
-    // Logique pour enregistrer les coordonnées modifiées
-    console.log('Nouveau prénom :', this.nouveauPrenom);
-    console.log('Nouveau nom :', this.nouveauNom);
-    console.log('Nouvel email :', this.nouvelEmail);
+    if (this.coordonneesForm.invalid) {
+      return;
+    }
 
-    // Vous pouvez appeler ici votre API pour enregistrer les modifications dans la base de données
-    // Réinitialiser les champs après l'enregistrement
-    this.nouveauPrenom = '';
-    this.nouveauNom = '';
-    this.nouvelEmail = '';
-    // Cacher le formulaire de modification
-    this.showModificationForm = false;
+    const nom = this.coordonneesForm.get('nom')?.value;
+    const prenom = this.coordonneesForm.get('prenom')?.value;
+    const email = this.coordonneesForm.get('email')?.value;
+
+    const updatedUser = new UserInterface()
+     updatedUser.firstName = this.userConnectee.firstName,
+    updatedUser.lastName = this.userConnectee.lastName,
+    updatedUser.email = this.userConnectee.email,
+      
+    
+
+    this.userService.Updateuser(this.userConnectee.id, updatedUser).subscribe(updatedUser => {
+      this.userConnectee = updatedUser;
+      this.showModificationForm = false;
+    }, error => {
+      // Gérer les erreurs ici
+    });
   }
-
+  chargerPublicationsUtilisateur() {
+    this.publicationService.getPublicationsByUserId(1).subscribe(data => {
+      this.publicationsUser = data;
+    });    
+  }
   supprimerPublication(publicationId: number) {
     this.publicationService.supprimerPublicationsById(publicationId).subscribe(() => {
       // Après la suppression réussie, recharger la liste des publications de l'utilisateur
