@@ -96,9 +96,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "include": [
+              "src/app/signup/signup.component.spec.ts"
+            ]
           }
         }
+        
       }
     }
   }
