@@ -8,12 +8,12 @@ import { SigninComponent } from './signin/signin.component';
 import { ProfilComponent } from './profil/profil.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { PublicationComponent } from './publication/publication.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; // Importez HTTP_INTERCEPTORS ici
 import { AjouterPublicationComponent } from './ajouter-publication/ajouter-publication.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { PublicationsService } from './publications.service';
 import { RouterModule } from '@angular/router';
-
+import { AuthInterceptor } from './auth.interceptor'; // Importez l'intercepteur d'authentification ici
 
 @NgModule({
   declarations: [
@@ -25,8 +25,6 @@ import { RouterModule } from '@angular/router';
     PublicationComponent,
     AjouterPublicationComponent,
     MessagerieComponent,
-    
-
   ],
   imports: [
     BrowserModule,
@@ -36,7 +34,10 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule
   ],
-  providers: [PublicationsService ],
+  providers: [
+    PublicationsService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // Fournissez l'intercepteur ici
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

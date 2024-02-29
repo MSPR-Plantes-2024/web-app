@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, EMPTY } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationResponse } from './authentication-response.interface';
 import { AuthenticationRequest } from './authentication-request.interface';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +17,19 @@ export class AuthService {
   }
 
   authenticateUser(authData: AuthenticationRequest): Observable<AuthenticationResponse> {
-    return this.http.post<AuthenticationResponse>('http://localhost:8080/api/v1/auth/authenticate', authData)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token') // Récupère le jeton d'authentification depuis le stockage local
+    });
+
+    return this.http.post<AuthenticationResponse>('http://localhost:8080/api/v1/auth/authenticate', authData, { headers })
       .pipe(
-        tap((response: AuthenticationResponse) => {
-          localStorage.setItem('authToken', response.accessToken); // Stocker le token dans le localStorage
-        }),
         catchError(error => {
-          throw error;
+          console.error('Error during authentication:', error);
+          return EMPTY;
         })
       );
   }
-  
 
   refreshToken(): Observable<any> {
     return this.http.post<any>('http://localhost:8080/api/v1/auth/refresh-token', {});
