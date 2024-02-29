@@ -4,8 +4,9 @@
   </a>
   <div class="navbar-collapse justify-content-center"></div>
   <div class="ml-auto">
-    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
-    <a class="navbar-brand" routerLink="/publications" [routerLinkActive]="['active']" style="color: #005307;">Publications</a>
+    <a class="navbar-brand" routerLink="/profile" [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }">Mon Espace</a>
+    <a class="navbar-brand" routerLink="/publications">Publications</a>
   </div>
 </nav>
 
@@ -13,9 +14,9 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="text-center user-picture">
-        <img src="assets/images.jpeg" alt="User Avatar" class="img-fluid rounded">
+        <img src="assets/pngwing.com (4).png" alt="User Avatar" class="img-fluid rounded">
       </div>
-      <div>
+      <div class="user-details mt-3 text-center">
         <label>Nom: </label>
         <p>{{userConnectee.lastName}}</p>
 
@@ -25,7 +26,7 @@
         <label>Email: </label>
         <p>{{userConnectee.email}}</p>
       </div>
-      <div class="user-details mt-3 text-center">
+      <div class="text-center">
         <button class="btn btn-success" (click)="modifierCoordonnees()">Modifier mes coordonnées</button>
       </div>
       <div class="modification-form mt-3" *ngIf="showModificationForm">
@@ -39,7 +40,8 @@
           <div class="form-group">
             <input type="email" class="form-control" placeholder="Nouvel email" formControlName="email">
           </div>
-          <button type="button" (click)="enregistrerCoordonnees()" class="btn btn-success btn-block">Enregistrer</button>
+          <button type="button" (click)="enregistrerCoordonnees()"
+            class="btn btn-success btn-block">Enregistrer</button>
         </form>
       </div>
       <div class="publications mt-4">
@@ -52,7 +54,8 @@
                 <h5 class="card-title">{{ publication.creationDate }}</h5>
                 <p class="card-text">{{ publication.address.city }}</p>
                 <p class="card-text">{{ publication.address.postalAddress }}</p>
-                <button type="button" class="btn btn-danger btn-block" (click)="supprimerPublication(publication.id)">Supprimer</button>
+                <button type="button" class="btn btn-danger btn-block"
+                  (click)="supprimerPublication(publication.id)">Supprimer</button>
               </div>
             </div>
           </div>
@@ -60,13 +63,16 @@
       </div>
       <div class="gardienages mt-4">
         <h2 class="text-center mb-4">Mes Gardiennages</h2>
-        <!-- Ajoutez ici votre code pour afficher les gardiennages de l'utilisateur -->
+        <div *ngFor="let gardiennage of gardiennagesUser" class="col-md-3">
+          <!-- Affichez les détails du gardiennage ici -->
+        </div>
       </div>
       <div class="add-plant-box mt-4 text-center">
         <div class="container">
           <div class="box">
             <h2 class="mb-4">Ajouter une publication</h2>
-            <p>Vous souhaitez ajouter une nouvelle publication ? Cliquez sur le bouton ci-dessous pour accéder au formulaire.</p>
+            <p>Vous souhaitez ajouter une nouvelle publication ? Cliquez sur le bouton ci-dessous pour accéder au
+              formulaire.</p>
             <a routerLink="/ajouterpublication" class="btn btn-success">Ajouter une publication</a>
           </div>
         </div>

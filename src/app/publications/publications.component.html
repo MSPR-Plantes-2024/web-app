@@ -42,6 +42,8 @@
                   <p class="card-text">{{ publication.description }}</p>
                   <p class="card-text">Code Postal :{{ publication.address.zipCode }}</p>
                   <p class="card-text">Ville : {{ publication.address.city }}</p>
+                  <button *ngIf="!isUserPublication(publication)" (click)="reservePublication(publication)">Réserver</button>
+
                 </div>
               </div>
             </div>

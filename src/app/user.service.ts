@@ -33,7 +33,7 @@ export class UserService {
       );
   } 
 
-    Updateuser(userId: number, updatedUser: UserInterface): Observable<User> {
+  Updateuser(userId: number, updatedUser: User): Observable<User> {
     return this.http.put<User>('http://localhost:8080/api/v1/users/' + userId, updatedUser)
       .pipe(
         catchError(error => {
@@ -41,6 +41,6 @@ export class UserService {
           return throwError('Something went wrong while updating user data');
         })
       );
-  }
+}
   
 }

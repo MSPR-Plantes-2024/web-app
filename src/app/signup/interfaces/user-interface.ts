@@ -6,6 +6,7 @@ export class UserInterface{
 	firstName!: string;
 	lastName!: String ;
 	email!: string;
-    password!: string;
-	userType!: UserTypeInterface;
+    password?: string;
+	userType?: UserTypeInterface;
+ 
 }

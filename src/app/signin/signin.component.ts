@@ -53,7 +53,7 @@ export class SigninComponent implements OnInit {
       this.registrationSuccess = true;
       setTimeout(() => {
         this.registrationSuccess = false;
-        this.router.navigate(['/publications']);
+        this.router.navigate(['/profile']); // Naviguer vers la page de profil);
       }, 1000);
     }
   }
