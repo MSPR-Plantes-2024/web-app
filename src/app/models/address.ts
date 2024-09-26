@@ -28,7 +28,7 @@ export class Address {
         ['postalAddress', this.postalAddress],
         ['city', this.city],
         ['zipCode', this.zipCode],
-        ['otherInformations', this.otherInformations || '']
+        ['otherInformations', this.otherInformations ?? '']
       ]
     );
   }
