@@ -14,4 +14,8 @@ export class User {
     this.password = password;
     this.userType = userType;
   }
+
+  static fromJson(json: Map<string, any>): User {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -17,4 +17,34 @@ export class Report {
     this.pictures = pictures;
     this.text = text;
   }
+
+  toJson(): Map<string, any> {
+    if (!this.publication?.id) {
+      throw new Error('Publication must be defined');
+    }
+    return new Map<string, any>(
+      [
+        ['id', this.id?.toString() ?? ''],
+        ['title', this.title],
+        ['date', this.date.toISOString()],
+        ['publication', this.publication.id.toString()],
+        ['pictures', this.pictures.map((picture: Picture) => picture.toJson())],
+        ['text', this.text]
+      ]
+    );
+  }
+
+  static fromJson(json: Map<string, any>): Report {
+    if (!json.get('publication')) {
+      throw new Error('Publication must be defined');
+    }
+    return new Report(
+      json.get('title'),
+      new Date(json.get('date')),
+      Publication.fromJson(json.get('publication')),
+      json.get('pictures') ? (json.get('reports') as Array<Map<string, any>>).map(picture => Picture.fromJson(picture)) : [], 
+      json.get('text'),
+      json.get('id')
+    );
+  }
 }

@@ -8,4 +8,22 @@ export class Picture {
     this.date = date;
     this.data = data;
   }
+
+  toJson(): Map<string, any> {
+    return new Map<string, any>(
+      [
+        ['id', this.id?.toString() ?? ''],
+        ['data', this.data],
+        ['date', this.date?.toISOString() ?? new Date().toISOString()]
+      ]
+    );
+  }
+
+  static fromJson(json: Map<string, any>): Picture {
+    return new Picture(
+      json.get('data').split(',').map((value: string) => parseInt(value)),
+      new Date(json.get('date')),
+      json.get('id')
+    );
+  }
 }
