@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { BASE_URL, ADDRESSES_ENDPOINT } from './constants';
+
 import {Observable, throwError} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
+
+import { BASE_URL, ADDRESSES_ENDPOINT } from './constants';
 import { User } from '../models/user';
 import { Address } from '../models/address';
 
