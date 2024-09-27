@@ -15,7 +15,7 @@ export class AddressService {
 
   constructor(private http: HttpClient) {}
 
-  getById(id: number): Observable<Address> {
+  public getById(id: number): Observable<Address> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -30,7 +30,7 @@ export class AddressService {
     );
   }
 
-  getByUser(user: User): Observable<Array<Address>> {
+  public getByUser(user: User): Observable<Array<Address>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -45,7 +45,7 @@ export class AddressService {
     );
   }
 
-  create(address: Address): Observable<void> {
+  public create(address: Address): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -59,7 +59,7 @@ export class AddressService {
     );
   }
 
-  update(address: Address): Observable<void> {
+  public update(address: Address): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -73,7 +73,7 @@ export class AddressService {
     );
   }
 
-  delete(address: Address): Observable<void> {
+  public delete(address: Address): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

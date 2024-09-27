@@ -15,7 +15,27 @@ export class User {
     this.userType = userType;
   }
 
+  toJson(): Map<string, any> {
+    return new Map<string, any>(
+      [
+        ['id', this.id?.toString() ?? ''],
+        ['firstName', this.firstName],
+        ['lastName', this.lastName],
+        ['email', this.email],
+        ['password', this.password],
+        ['userType', this.userType]
+      ]
+    );
+  }
+
   static fromJson(json: Map<string, any>): User {
-    throw new Error('Method not implemented.');
+    return new User(
+      json.get('firstName'),
+      json.get('lastName'),
+      json.get('email'),
+      json.get('password'),
+      json.get('userType'),
+      json.get('id')
+    );
   }
 }

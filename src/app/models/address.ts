@@ -17,7 +17,7 @@ export class Address {
     this.otherInformations = otherInformations;
   }
 
-  toJson(): Map<string, any> {
+  public toJson(): Map<string, any> {
     if (!this.user?.id) {
       throw new Error('User must be defined');
     }
@@ -33,7 +33,7 @@ export class Address {
     );
   }
 
-  static fromJson(json: Map<string, any>): Address {
+  public static fromJson(json: Map<string, any>): Address {
     if (!json.get('user')) {
       throw new Error('User must be defined');
     }
