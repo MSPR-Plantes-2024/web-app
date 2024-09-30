@@ -3,10 +3,11 @@ import { SignupComponent } from './signup.component';
 import { FormBuilder } from '@angular/forms';
 import { UserCreateService } from '../user-create.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { UserInterface } from './interfaces/user-interface';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -16,10 +17,10 @@ describe('SignupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SignupComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule], // Ajoutez ReactiveFormsModule ici
-      providers: [FormBuilder, UserCreateService]
-    }).compileComponents();
+    declarations: [SignupComponent],
+    imports: [RouterTestingModule, ReactiveFormsModule],
+    providers: [FormBuilder, UserCreateService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
 
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
