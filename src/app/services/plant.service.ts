@@ -12,9 +12,13 @@ import { Address } from '../models/address';
 })
 export class PlantService {
 
-  constructor(private http: HttpClient) { }
+  private static http: HttpClient;
 
-  public getById(id: number): Observable<Plant> {
+  constructor(http: HttpClient) {
+    PlantService.http = http;
+   }
+
+  public static getById(id: number): Observable<Plant> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -29,7 +33,7 @@ export class PlantService {
     );
   }
 
-  public getByAddress(address: Address): Observable<Array<Plant>> {
+  public static getByAddress(address: Address): Observable<Array<Plant>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +48,7 @@ export class PlantService {
     );
   }
 
-  public create(plant: Plant): Observable<Plant> {
+  public static create(plant: Plant): Observable<Plant> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -59,7 +63,7 @@ export class PlantService {
     );
   }
 
-  public update(plant: Plant): Observable<void> {
+  public static update(plant: Plant): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -73,7 +77,7 @@ export class PlantService {
     );
   }
 
-  public delete(plant: Plant): Observable<void> {
+  public static delete(plant: Plant): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

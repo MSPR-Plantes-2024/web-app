@@ -1,7 +1,7 @@
-import { JdkToken } from '../jdk-token';
+import { Jwt } from '../jwt';
 
 describe('JdkToken', () => {
   it('should create an instance', () => {
-    expect(new JdkToken()).toBeTruthy();
+    expect(new Jwt()).toBeTruthy();
   });
 });

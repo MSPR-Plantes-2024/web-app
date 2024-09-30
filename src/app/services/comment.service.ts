@@ -13,7 +13,7 @@ import { Publication } from '../models/publication';
 })
 export class CommentService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   public getByPublication(publication: Publication): Observable<Array<Comment>> {
     const headers = new HttpHeaders({

@@ -13,7 +13,7 @@ import { Address } from '../models/address';
 })
 export class AddressService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getById(id: number): Observable<Address> {
     const headers = new HttpHeaders({

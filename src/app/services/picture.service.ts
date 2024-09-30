@@ -11,9 +11,13 @@ import { Picture } from '../models/picture';
 })
 export class PictureService {
 
-  constructor(private http: HttpClient) { }
+  private static http: HttpClient;
 
-  public getById(id: number): Observable<Picture> {
+  constructor(http: HttpClient) {
+    PictureService.http = http;
+   }
+
+  public static getById(id: number): Observable<Picture> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -28,7 +32,7 @@ export class PictureService {
     );
   }
 
-  public create(picture: Picture): Observable<void> {
+  public static create(picture: Picture): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +46,7 @@ export class PictureService {
     );
   }
 
-  public update(picture: Picture): Observable<void> {
+  public static update(picture: Picture): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -56,7 +60,7 @@ export class PictureService {
     );
   }
 
-  public delete(picture: Picture): Observable<void> {
+  public static delete(picture: Picture): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

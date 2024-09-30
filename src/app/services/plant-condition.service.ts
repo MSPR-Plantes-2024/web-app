@@ -11,9 +11,13 @@ import { PlantCondition } from '../models/plant-condition';
 })
 export class PlantConditionService {
 
-  constructor(private http: HttpClient) { }
+  private static http: HttpClient;
 
-  public getAll(): Observable<Array<PlantCondition>> {
+  constructor(http: HttpClient) {
+    PlantConditionService.http = http;
+   }
+
+  public static getAll(): Observable<Array<PlantCondition>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

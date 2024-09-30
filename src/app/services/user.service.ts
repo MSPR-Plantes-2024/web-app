@@ -3,15 +3,23 @@ import { Injectable } from '@angular/core';
 import { BASE_URL, USERS_ENDPOINT } from './constants';
 import { Observable, map, tap, catchError, throwError } from 'rxjs';
 import { User } from '../models/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private static http: HttpClient;
+  private static cookieService: CookieService;
 
-  constructor( private http: HttpClient ) { }
+  constructor(
+    http: HttpClient,
+    cookieService: CookieService) {
+      UserService.http = http;
+      UserService.cookieService = cookieService;
+    }
 
-  public getById(id: number): Observable<User> {
+  public static getById(id: number): Observable<User> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -26,7 +34,7 @@ export class UserService {
     );
   }
 
-  public update(user: User): Observable<void> {
+  public static update(user: User): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -40,7 +48,7 @@ export class UserService {
     );
   }
 
-  public delete(user: User): Observable<void> {
+  public static delete(user: User): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -52,5 +60,21 @@ export class UserService {
         return throwError(() => new Error(error));
       })
     );
+  }
+
+  public static setCurrent(user: User, expirationDate: Date): void {
+    this.cookieService.set('user', JSON.stringify(user), expirationDate);
+  }
+
+  public static getCurrent(): User {
+    return User.fromJson(JSON.parse(this.cookieService.get('user')));
+  }
+
+  public static removeCurrent(): void {
+    this.cookieService.delete('user');
+  }
+
+  public static isCurrent(user: User): boolean {
+    return User.fromJson(JSON.parse(this.cookieService.get('user'))).id === user.id;
   }
 }

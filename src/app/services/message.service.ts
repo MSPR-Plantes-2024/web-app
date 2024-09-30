@@ -12,9 +12,13 @@ import { User } from '../models/user';
 })
 export class MessageService {
 
-  constructor(private http: HttpClient) { }
+  private static http: HttpClient;
 
-  public getById(id: number): Observable<Message> {
+  constructor(http: HttpClient) {
+    MessageService.http = http;
+   }
+
+  public static getById(id: number): Observable<Message> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -29,7 +33,7 @@ export class MessageService {
     );
   }
 
-  public getByUser(user: User): Observable<Array<Array<Message>>> {
+  public static getByUser(user: User): Observable<Array<Array<Message>>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +48,7 @@ export class MessageService {
     );
   }
 
-  public create(message: Message): Observable<void> {
+  public static create(message: Message): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -58,7 +62,7 @@ export class MessageService {
     );
   }
 
-  public update(message: Message): Observable<void> {
+  public static update(message: Message): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -72,7 +76,7 @@ export class MessageService {
     );
   }
 
-  public delete(message: Message): Observable<void> {
+  public static delete(message: Message): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

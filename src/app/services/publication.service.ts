@@ -12,9 +12,13 @@ import { User } from '../models/user';
 })
 export class PublicationService {
 
-  constructor(private http: HttpClient) { }
+  private static http: HttpClient;
 
-  public getById(id: number): Observable<Publication> {
+  constructor(http: HttpClient) {
+    PublicationService.http = http;
+   }
+
+  public static getById(id: number): Observable<Publication> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -29,7 +33,7 @@ export class PublicationService {
     );
   }
 
-  public getAll(): Observable<Array<Publication>> {
+  public static getAll(): Observable<Array<Publication>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +48,7 @@ export class PublicationService {
     );
   }
 
-  public getByUser(user: User): Observable<Array<Publication>> {
+  public static getByUser(user: User): Observable<Array<Publication>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -59,7 +63,7 @@ export class PublicationService {
     );
   }
 
-  public create(publication: Publication): Observable<Publication> {
+  public static create(publication: Publication): Observable<Publication> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -74,7 +78,7 @@ export class PublicationService {
     );
   }
 
-  public update(publication: Publication): Observable<void> {
+  public static update(publication: Publication): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -88,7 +92,7 @@ export class PublicationService {
     );
   }
 
-  public delete(publication: Publication): Observable<void> {
+  public static delete(publication: Publication): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`

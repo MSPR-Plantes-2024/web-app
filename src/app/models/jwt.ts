@@ -1,4 +1,4 @@
-export class JdkToken {
+export class Jwt {
   token: string;
   refreshToken: string;
   expirationDateTime: Date;
@@ -9,8 +9,8 @@ export class JdkToken {
     this.expirationDateTime = expirationDateTime;
   }
 
-  static fromJson(json: Map<string, any>): JdkToken {
-    return new JdkToken(
+  static fromJson(json: Map<string, any>): Jwt {
+    return new Jwt(
       json.get('token'),
       json.get('refreshToken'),
       new Date(

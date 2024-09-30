@@ -11,10 +11,13 @@ import { Publication } from '../models/publication';
   providedIn: 'root'
 })
 export class ReportService {
+  private static http: HttpClient;
 
-  constructor(private http: HttpClient) { }
+  constructor(http: HttpClient) {
+    ReportService.http = http;
+   }
 
-  public getById(id: number): Observable<Report> {
+  public static getById(id: number): Observable<Report> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -29,7 +32,7 @@ export class ReportService {
     );
   }
 
-  public getByPublication(publication: Publication): Observable<Array<Report>> {
+  public static getByPublication(publication: Publication): Observable<Array<Report>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +47,7 @@ export class ReportService {
     );
   }
 
-  public create(report: Report): Observable<Report> {
+  public static create(report: Report): Observable<Report> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -59,7 +62,7 @@ export class ReportService {
     );
   }
 
-  public update(report: Report): Observable<void> {
+  public static update(report: Report): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -73,7 +76,7 @@ export class ReportService {
     );
   }
 
-  public delete(report: Report): Observable<void> {
+  public static delete(report: Report): Observable<void> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
