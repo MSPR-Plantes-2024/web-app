@@ -48,12 +48,3 @@ Créez une nouvelle branche (git checkout -b feature/ajouter-nouvelle-fonctionna
 Committez vos modifications (git commit -am 'Ajouter une nouvelle fonctionnalité')
 Poussez votre branche (git push origin feature/ajouter-nouvelle-fonctionnalité)
 Soumettez une demande de tirage (Pull Request)
-
-
-## Auteur
-
-Hosni HAMDI
-
-## Licence
-
-Hosni HAMDI .
